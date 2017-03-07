@@ -72,9 +72,9 @@ After masking the Canny Edge output it's time to detect the lines. The [Hough Tr
 
      rho = 1 # distance resolution in pixels of the Hough grid
      theta = (np.pi/180)*1  # angular resolution in radians of the Hough grid
-     threshold = 15     # minimum number of votes (intersections in Hough grid cell)
-     min_line_length = 4  #minimum number of pixels making up a line
-     max_line_gap = 1    # maximum gap in pixels between connectable line segments
+     threshold = 50     # minimum number of votes (intersections in Hough grid cell)
+     min_line_length = 100  #minimum number of pixels making up a line
+     max_line_gap = 160    # maximum gap in pixels between connectable line segments
      houghImage = hough_lines(maskedImage, rho, theta, threshold, min_line_length, max_line_gap)
 
 Using only this will output a bunch of lines, like so:
@@ -116,7 +116,7 @@ One of the obvious potential shortcomings (as we can see if we try to process th
 Difference in lighting is another possible shortcoming. For this project we worked with 2 videos recorded in broad daylight. Identifying lanes at night would be much harder because of the smaller contrast (gradient). Canny edge conversion would have to be really fine-tuned and working with the car headlights would definitely be much harder.
 
 ### 3. Sharper edges misinterpretation
-Getting close to a sharp curve/edge would definitely cause problems on the current algorithm. As we get closer and closer to, for example, a 90° turn, the lenght of the lane detected would get smaller and smaller until the cars gets right before the curve. At this point the algorithm will just stop working and identify lines at the end of the road or something else.
+Getting close to a sharp curve/edge would definitely cause problems on the current algorithm. As we get closer and closer to, for example, a 90Â° turn, the lenght of the lane detected would get smaller and smaller until the cars gets right before the curve. At this point the algorithm will just stop working and identify lines at the end of the road or something else.
 
 
 
